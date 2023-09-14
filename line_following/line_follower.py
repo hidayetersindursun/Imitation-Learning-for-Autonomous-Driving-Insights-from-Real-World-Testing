@@ -45,7 +45,7 @@ class BaseClass(object):
         self.angle = 0   # in radians
         
         # Car speed
-        self.speed = 0.8  #m/s
+        self.speed = 0.6  #m/s
         
         self.rate = rospy.Rate(20)
         
@@ -63,7 +63,7 @@ class BaseClass(object):
 
         #Controller Parameters
         self.Kp=0.1
-        self.Ki=0.001
+        self.Ki=0
         self.Kd=0.2
         
         self.dt = 1
@@ -77,7 +77,7 @@ class BaseClass(object):
 
     def image_process(self,img):
         img = cv2.resize(img, (640, 360))
-        self.img = img[250:350,:]
+        self.img = img[200:360,:]
         hsv = cv2.cvtColor(self.img, cv2.COLOR_BGR2HSV)
         
         lower_red = np.array([154, 60, 0])  #s 50 
@@ -96,6 +96,7 @@ class BaseClass(object):
         contours, _ = cv2.findContours(self.result, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         if len(contours) >0:
             largest_contour = max(contours, key=cv2.contourArea)
+            #if cv2.contourArea(largest_contour)>50:
             moment = cv2.moments(largest_contour) 
             object_x = int(moment["m10"] / moment["m00"])
             object_y = int(moment["m01"] / moment["m00"])
@@ -109,7 +110,7 @@ class BaseClass(object):
             cv2.line(self.img,(frame_center[0],frame_center[1]),(object_center[0],object_center[1]),(255,0,0),1)
             error = frame_center[0]-object_center[0]
             self.angle = self.Controller(error)
-            print(str(self.angle) + "  degrees: "+ str(self.angle*180/pi))
+            #print(str(self.angle) + "  degrees: "+ str(self.angle*180/pi))
             
 
     def Controller(self,error):
@@ -118,11 +119,6 @@ class BaseClass(object):
         D = self.Kd*(error-self.last_error)/self.dt
         self.last_error = error
         u=P+self.I+D
-
-        # if u>75:
-        #     u=75
-        # if u<-75:
-        #     u=-75
 
         u=u*pi/180  # convert from degree to radian 
         return u
