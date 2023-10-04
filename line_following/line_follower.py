@@ -47,7 +47,7 @@ class BaseClass(object):
         # Car speed
         self.speed = 0.6  #m/s
         
-        self.rate = rospy.Rate(20)
+        self.rate = rospy.Rate(25)
         
         # Debug mode. See what the car is seeing
         self.debug = True
