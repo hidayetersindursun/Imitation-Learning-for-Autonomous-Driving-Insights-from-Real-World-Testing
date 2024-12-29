@@ -61,7 +61,6 @@ If you find this work useful, please cite:
 @article{dursun2024imitation,
   title={Imitation Learning for Autonomous Driving: Insights from Real-World Testing},
   author={Dursun, Hidayet Ersin and Güven, Yusuf and Kumbasar, Tufan},
-  journal={IEEE},
   year={2024}
 }
 ```
