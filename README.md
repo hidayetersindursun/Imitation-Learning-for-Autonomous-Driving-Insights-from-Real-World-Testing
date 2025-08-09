@@ -1,6 +1,6 @@
 # Imitation Learning for Autonomous Driving: Insights from Real-World Testing
 
-This repository contains code and resources for implementing and testing an autonomous driving system, as detailed in *"Imitation Learning for Autonomous Driving: Insights from Real-World Testing"* by Hidayet Ersin Dursun, Yusuf Güven, and Tufan Kumbasar. The paper describes designing deep neural networks (DNNs) that translate raw image inputs into steering commands using an imitation learning framework. The project emphasizes real-time testing and smooth vehicle operation under varying conditions.
+This repository contains code and resources for implementing and testing an autonomous driving system, as detailed in *"Imitation Learning for Autonomous Driving: Insights from Real-World Testing"* by Hidayet Ersin Dursun, Yusuf Güven, and Tufan Kumbasar ([Available on arXiv](https://arxiv.org/abs/2504.18847)). The paper describes designing deep neural networks (DNNs) that translate raw image inputs into steering commands using an imitation learning framework. The project emphasizes real-time testing and smooth vehicle operation under varying conditions.
 
 ## Overview of Architectures
 
